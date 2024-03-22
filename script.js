@@ -151,4 +151,138 @@ function addPy(str){
     }
 }
 
-console.log(addPy("almas"))
+// console.log(addPy("almas"))
+
+//   remove a character at the specified position in a given string and return the modified string....
+
+function swapFirstAndLast(str){
+    if(str.length <= 1){
+        return str;
+    }
+    let firstChar = str[0];
+    let lastChar = str[str.length - 1]
+    let middleChar = str.substring(1, str.length - 1)
+    return lastChar + middleChar + firstChar;
+}
+
+// console.log(swapFirstAndLast("almas"))
+
+function addFirstCharToFrontAndBack(str){
+    let firstChar = str[0]
+    return firstChar + str + firstChar;
+}
+
+// console.log(addFirstCharToFrontAndBack("almas"))
+
+// check whether two given integer values are in the range 50..99 (inclusive). Return true if either of them falls within the range. 
+
+function checkRange(num1, num2){
+
+    return (num1 >= 50 && num1 <= 99) || (num2 >= 50 && num2 <= 99)
+}
+
+// console.log(checkRange(20,500))
+
+function check3Value(num1,num2,num3){
+    
+    return (num1 >= 50 && num1 >= 99) || (num2 >= 50 && num2 <= 99) || (num3 >= 50 && num3 <= 99)
+}
+
+// console.log(check3Value(20,30,90))
+
+// 30. Write a JavaScript program to check whether a string "Script" appears at the 5th (index 4) position in a given string. If "Script" appears in the string, return the string without "Script" otherwise return the original one. 
+
+function findScriptInString(str){
+    let scriptIndex = str.indexOf("Script")
+
+    if(scriptIndex === 4){
+        return str.substring(0, 4) + str.substring(scriptIndex, 4 )
+    }else{
+        return str
+    }
+}
+
+// console.log(findScriptInString("JavaScript"))
+
+// function for remove extra white space and aslo remove the multiple space of single space in the string....
+function removeWord(str){
+
+    let result = str.replace(/Script/g, " ")
+    result = result.replace(/\s+/g, " ")
+
+    return result.trim();
+
+}
+
+// console.log(removeWord("Hello this is Script and"))
+
+
+// # Problem --- 31
+
+// Write a JavaScript program to find the largest of three given integers.
+
+function largest(num1,num2,num3){
+    if(num1 >= num2 && num1 >= num3){
+        return num1
+    }else if(num2 >= num1 && num2 >= num3){
+        return num2
+    }else {
+        return num3
+    }
+}
+
+// console.log(largest(12,65,3))
+
+// # Problem --- 32
+
+// Write a JavaScript program to find the closest value to 100 from two numerical values. 
+
+function closestValue(num1,num2){
+
+let diff1 = Math.abs(num1 - 100)
+let diff2 = Math.abs(num2 - 100)
+
+    if(diff1 < diff2){
+        return num1
+    }else if(diff2 < diff1){
+        return num2
+    }else {
+        return num1
+    }
+}
+
+// console.log(closestValue(20,99))
+
+
+// # Problem --- 32
+
+// Write a JavaScript program to check whether two numbers are in the range 40..60 or 70..100 inclusive.  
+
+function checkNumRange(num1, num2){
+
+    return (num1 >= 40 && num1 <= 60) || (num1 >= 70 && num1 <= 100) || (num2 >= 40 && num2 <= 60) || (num2 >= 70 && num2 <= 100)
+}
+
+// console.log(checkNumRange(65,55))
+
+
+// # Problem --- 33
+
+// Write a JavaScript program to find the largest number from the two given positive integers. The two numbers are in the range 40..60 inclusive.
+
+function findLargest(num1, num2) {
+   
+    if (num1 >= 40 && num1 <= 60 && num2 >= 40 && num2 <= 60) {
+        
+        return Math.max(num1, num2);
+    } else {
+        
+        return "Numbers must be in the range 40..60 inclusive.";
+    }
+}
+
+
+// console.log(findLargest(55, 45)); 
+// console.log(findLargest(35, 50)); 
+
+// 41. Write a JavaScript program to check a set of three numbers; if the three numbers are the same return 30; otherwise return 20; and if two numbers are the same return 40. 
