@@ -251,7 +251,7 @@ let diff2 = Math.abs(num2 - 100)
     }
 }
 
-// console.log(closestValue(20,99))
+console.log(closestValue(20,99))
 
 
 // # Problem --- 32
@@ -263,7 +263,7 @@ function checkNumRange(num1, num2){
     return (num1 >= 40 && num1 <= 60) || (num1 >= 70 && num1 <= 100) || (num2 >= 40 && num2 <= 60) || (num2 >= 70 && num2 <= 100)
 }
 
-// console.log(checkNumRange(65,55))
+console.log(checkNumRange(65,55))
 
 
 // # Problem --- 33
@@ -282,7 +282,149 @@ function findLargest(num1, num2) {
 }
 
 
-// console.log(findLargest(55, 45)); 
-// console.log(findLargest(35, 50)); 
+console.log(findLargest(55, 45)); 
 
 // 41. Write a JavaScript program to check a set of three numbers; if the three numbers are the same return 30; otherwise return 20; and if two numbers are the same return 40. 
+
+function checkNumbers(num1, num2, num3) {
+    if (num1 === num2 && num2 === num3) {
+        
+        return 30;
+    } else if (num1 === num2 || num1 === num3 || num2 === num3) {
+        
+        return 40;
+    } else {
+        
+        return 20;
+    }
+}
+
+
+console.log(checkNumbers(5, 5, 5)); 
+
+
+// 42. Write a JavaScript program to check whether three given numbers are increasing in strict or in soft mode.  
+// Note: Strict mode -> 10, 15, 31 : Soft mode -> 24, 22, 31 or 22, 22, 31
+
+function checkMode(num1, num2, num3) {
+    if (num1 < num2 && num2 < num3) {
+        return "Strict mode";
+    } else if (num1 <= num2 && num2 <= num3) {
+        return "Soft mode";
+    } else {
+        return "Neither strict nor soft mode";
+    }
+}
+
+console.log(checkMode(10, 15, 31));
+
+
+// 48. Write a JavaScript program to reverse a given string.  
+
+function reverseStr(str){
+
+    let charAry = str.split("")
+    let reversedAry = charAry.reverse()
+    let reversedStr = reversedAry.join("")
+
+    return reversedStr;
+}
+
+console.log(reverseStr("Hello, I am Almas Khan"))
+
+// 49. Write a JavaScript program to replace every character in a given string with the character following it in the alphabet.  
+
+function replaceWithNextChar(str){
+    let result = '';
+
+    for(let i=0; i<str.length; i++){
+
+        let charCode = str.charCodeAt(i)
+
+        if(charCode >= 97 && charCode <= 122){
+            result += String.fromCharCode((charCode - 97 + 1) % 26 + 97)
+        }else if(charCode >= 65 && charCode <= 90){
+            result += String.fromCharCode((charCode - 65 + 1) % 26 + 65)
+        }else {
+            result += str[i]
+        }
+    }
+
+    return result;
+}
+
+console.log(replaceWithNextChar("abc"))
+
+// 50. Write a JavaScript program to capitalize the first letter of each word in a given string.  
+
+function capFirstLetter(str){
+
+    let words = str.split(' ')
+
+    for(let i=0; i<words.length; i++){
+        
+        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        
+    }
+
+    let capitalizedStr = words.join(' ');
+    return capitalizedStr
+}
+
+console.log(capFirstLetter("in this string first letter of every word become cap."))
+
+
+// 51. Write a JavaScript application that transforms a provided numerical value into hours and minutes.
+
+function transformToHoursAndMinutes(minutes) {
+    
+    let hours = Math.floor(minutes / 60);
+    let remainingMinutes = minutes % 60;
+
+    let result = '';
+    if (hours > 0) {
+        result += hours + ' hour';
+        if (hours !== 1) {
+            result += 's'; 
+        }
+    }
+    if (remainingMinutes > 0) {
+        if (result !== '') {
+            result += ' and '; 
+        }
+        result += remainingMinutes + ' minute';
+        if (remainingMinutes !== 1) {
+            result += 's'; 
+        }
+    }
+
+    return result;
+}
+
+console.log(transformToHoursAndMinutes(60))
+
+// 52. Write a JavaScript program to convert letters of a given string alphabetically.  
+
+function alphabeticallyArrange(str){
+    let chars = str.split('')
+    chars.sort()
+    let sortedStr = chars.join(' ')
+
+    return sortedStr;
+}
+
+console.log(alphabeticallyArrange("poikmlbhyugwrwfvxczqa"))
+
+// 54. Write a JavaScript program to count the number of vowels in a given string.
+
+function countVowels(str){
+    let pattern = /[aeiou]/gi;
+
+    let matches = str.match(pattern)
+    return matches || [];
+    // return matches ? matches.length : 0;
+
+}
+
+console.log(countVowels("fdii2aiouwje"))
+
