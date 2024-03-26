@@ -229,3 +229,198 @@ function amountToCoins(amount, coins) {
 }
 
 console.log(amountToCoins(50, [5])); 
+
+// 15. Write a JavaScript function to compute the value of bn where n is the exponent and b is the base. Accept b and n from the user and display the results.
+
+function computeExponent(base,exponent){
+  return Math.pow(base,exponent)
+}
+
+console.log(computeExponent(2,5))
+
+// 16. Write a JavaScript function to extract unique characters from a string. Example string : "thequickbrownfoxjumpsoverthelazydog"
+
+function uniqueChar(str) {
+  let uniqueChars = '';
+  let charCounts = {};
+
+
+  for (let char of str) {
+    if (charCounts[char] === undefined) { 
+      charCounts[char] = 0;
+    }
+    charCounts[char]++; 
+  }
+
+ 
+  for (let char in charCounts) {
+    if (charCounts[char] === 1 && char !== ' ') {
+      uniqueChars += char;
+    }
+  }
+
+  return uniqueChars;
+}
+
+console.log(uniqueChar("thequickbrownfoxjumpsoverthelazydog")); 
+
+// 17. Write a JavaScript function to get the number of occurrences of each letter in a specified string.
+
+function countLetterOccurernces(str){
+
+  let letterCounts = {};
+
+  for(let char of str){
+    if(/^[a-zA-Z]$/.test(char)){
+      char = char.toLowerCase();
+      letterCounts[char] = (letterCounts[char] || 0) + 1;
+    }
+  }
+  return letterCounts;
+
+}
+
+console.log(countLetterOccurernces("Hello, This is Almas Khan and This is JavaSCript Mastry Practice."))
+
+
+// 18. Write a function for searching JavaScript arrays with binary searches. 
+
+function binarySearch(ary, target){
+  let low = 0;
+  let high = ary.length - 1;
+
+  while (low <= high){
+    const mid = Math.floor((low+high)/2)
+    const midVal = ary[mid];
+
+    if(midVal === target){
+      return mid;
+    }else if(midVal < target){
+       low = mid + 1;
+    }else {
+      high = mid - 1;
+    }
+  }
+
+  return -1;
+}
+
+
+// 19. Write a JavaScript function that returns array elements larger than a number.
+
+function elementsLarger(ary, num){
+
+  return ary.filter(element => element > num)
+}
+
+console.log(elementsLarger([1,2,4,6],3))
+
+// 20. Write a JavaScript function that generates a string ID (specified length) of random characters.Sample character list : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+function generateRandomId(length){
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  let randomId = '';
+
+  for(let i=0; i < length; i++){
+
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    randomId = randomId + characters.charAt(randomIndex)
+  }
+  return randomId;
+}
+
+console.log(generateRandomId(8))
+
+// 21. Write a JavaScript function to get all possible subsets with a fixed length (for example 2) combinations in an array. Sample array : [1, 2, 3] and subset length is 2
+
+function subsetsWithFixedLength(ary, length){
+
+  let subsets = []
+
+  function generateSubstes(currentSubset, startIndex){
+    
+    if(currentSubset.length === length){
+      subsets.push(currentSubset.slice())
+      return;
+    }
+
+    for(let i=startIndex; i < ary.length; i++){
+      currentSubset.push(ary[i])
+      generateSubstes(currentSubset, i + 1);
+      currentSubset.pop();
+    }
+  }
+
+  generateSubstes([], 0);
+  return subsets;
+}
+
+console.log(subsetsWithFixedLength([1,2,3],2))
+
+// 22. Write a JavaScript function that accepts two arguments, a string and a letter and the function will count the number of occurrences of the specified letter within the string. Sample arguments : 'w3resource.com', 'o'
+
+function countNumberOfOccurence(str, letter){
+
+  let count = 0;
+  let modifiedStr = str.toLowerCase();
+
+  for(let i=0; i<modifiedStr.length; i++){
+
+    if(modifiedStr[i] === letter){
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countNumberOfOccurence("Almas Khan", "a"))
+
+// 23. Write a JavaScript function to find the first not repeated character.Sample arguments : 'abacddbec'
+
+function notRepeatedChar(str){
+  let charCount = {};
+
+  for(let char of str){
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  for(let char of str){
+    if(charCount[char] === 1){
+      return char;
+    }
+  }
+
+  return null;
+}
+
+console.log(notRepeatedChar("abacddbec"))
+
+
+// Write a JavaScript function to apply the Bubble Sort algorithm.Note : According to wikipedia "Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that works by repeatedly stepping through the list to be sorted, comparing each pair of adjacent items and swapping them if they are in the wrong order".Sample array : [12, 345, 4, 546, 122, 84, 98, 64, 9, 1, 3223, 455, 23, 234, 213]
+
+function bubbleSort(arr) {
+  let len = arr.length;
+  let swapped;
+
+  do {
+      swapped = false;
+      for (let i = 0; i < len - 1; i++) {
+          if (arr[i] > arr[i + 1]) {
+              // Swap elements if they are in the wrong order
+              let temp = arr[i];
+              arr[i] = arr[i + 1];
+              arr[i + 1] = temp;
+              swapped = true;
+          }
+      }
+  } while (swapped);
+
+  return arr;
+}
+
+
+let array = [12, 345, 4, 546, 122, 84, 98, 64, 9, 1, 3223, 455, 23, 234, 213];
+
+let sortedArray = bubbleSort(array);
+console.log(sortedArray);

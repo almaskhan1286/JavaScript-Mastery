@@ -4,3 +4,8 @@
  if(str){
     
 }
+
+## longest string...  "Web Development Tutorial"  --> Development
+
+-- convert str to arry for better controlling and manipulation
+-- iterate through each word and count the total indexes of each word in the string
