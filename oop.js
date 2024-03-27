@@ -12,3 +12,4 @@ let person1 = new Person("Almas",23,"Pakistan")
 let person2 = new Person("Ali",26,"America")
 
 console.log({person1,person2})
+
